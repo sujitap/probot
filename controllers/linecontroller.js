@@ -8,7 +8,6 @@ const client = new line.Client(config.lineconfig);
 
 // create Express app
 // about Express itself: https://expressjs.com/
-const app = express();
 
 // private
 function webhookTmp(req, res){  
