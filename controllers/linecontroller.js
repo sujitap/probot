@@ -32,8 +32,8 @@ function handleEvent(event){
     
       // use reply API
       // return client.replyMessage(event.replyToken, echo);
-      return client.pushMessage(event.source.userId, echo)
-};
+      return client.pushMessage(event.source.userId, echo);
+}
 
 // public
 module.exports = {
