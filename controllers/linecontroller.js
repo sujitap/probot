@@ -4,7 +4,7 @@ const line = require('@line/bot-sdk');
 const config = require('../configs');
  
 // create LINE SDK client
-const client = new line.Client(config.config);
+const client = new line.Client(config.lineconfig);
 
 // create Express app
 // about Express itself: https://expressjs.com/
