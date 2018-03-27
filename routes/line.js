@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 // // register a webhook handler with middleware
 // // about the webhook, please refer to doc
-router.post('/callback', line.middleware(config), (req, res) => {
+router.post('/callback', line.middleware(config.lineconfig), (req, res) => {
   Promise.all(req.body.events.map(handleEvent))
     .then((result) => res.json(result))
     .catch((err) => {
