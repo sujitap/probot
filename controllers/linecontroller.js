@@ -3,8 +3,10 @@
 const line = require('@line/bot-sdk');
 const config = require('../configs');
 const datamodel = require('../model/data');
+const recast = require('../controllers/recastcontroller');
 // create LINE SDK client
 const client = new line.Client(config.lineconfig);
+
 
 // create Express app
 // about Express itself: https://expressjs.com/
@@ -21,10 +23,10 @@ function webhookTmp(req, res){
 }
 
 function handleEvent(event){
-    // if (event.type !== 'message' || event.message.type !== 'text') {
-    //     // ignore non-text-message event
-    //     return Promise.resolve(null);
-    //   }
+    if (event.type !== 'message' || event.message.type !== 'text') {
+        // ignore non-text-message event
+        return Promise.resolve(null);
+      }
     
       // create a echoing text message
       let echo = { type: 'text', text: event.message.text };
@@ -56,6 +58,8 @@ function handleEvent(event){
       })
       .then((result) => {
         console.log("result : " + result);
+        let data = recast.fnrecast;
+        console.log(data);
         return client.pushMessage(event.source.userId, echoButton);
       })
       .catch((error) => {
