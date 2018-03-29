@@ -28,7 +28,31 @@ function handleEvent(event){
     
       // create a echoing text message
       let echo = { type: 'text', text: event.message.text };
+      let echoButton ={
+        type: "template",
+        altText: "this is a confirm template",
+        template: {
+            type: "confirm",
+            text: event.message.text,
+            actions: [
+                {
+                  type: "message",
+                  label: "Yes",
+                  text: "yes"
+                },
+                {
+                  type: "message",
+                  label: "No",
+                  text: "no"
+                }
+            ]
+        }
+      }
       
+
+
+
+
       datamodel.create({
         name: event.message.text,
         size: '1',
@@ -36,7 +60,7 @@ function handleEvent(event){
       })
       .then((result) => {
         console.log("result : " + result);
-        return client.pushMessage(event.source.userId, result.name);
+        return client.pushMessage(event.source.userId, echoButton);
       })
       .catch((error) => {
         console.log("error : " + error);
