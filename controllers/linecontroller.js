@@ -58,12 +58,13 @@ function handleEvent(event){
       })
       .then((result) => {
         console.log("result : " + result);
-        return recast.fnrecast(event.message.text, id);
+        let a =  recast.fnrecast(event.message.text, id);
+        console.log("data recast : " + a);
       })
-      .then((d) => {
-        console.log("data recast : " + d);
-        return client.pushMessage(event.source.userId, echoButton);
-      })
+      // .then((d) => {
+      //   console.log("data recast : " + d);
+      //   return client.pushMessage(event.source.userId, echoButton);
+      // })
       .catch((error) => {
         console.log("error : " + error);
       });
