@@ -12,7 +12,7 @@ var lineRouter = require('./routes/line');
 
 var app = express();
 
-mongoose.Connection(configs.dbconnection);
+mongoose.connect(configs.dbconnection);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
