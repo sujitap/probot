@@ -21,10 +21,10 @@ function webhookTmp(req, res){
 }
 
 function handleEvent(event){
-    if (event.type !== 'message' || event.message.type !== 'text') {
-        // ignore non-text-message event
-        return Promise.resolve(null);
-      }
+    // if (event.type !== 'message' || event.message.type !== 'text') {
+    //     // ignore non-text-message event
+    //     return Promise.resolve(null);
+    //   }
     
       // create a echoing text message
       let echo = { type: 'text', text: event.message.text };
@@ -36,6 +36,7 @@ function handleEvent(event){
       })
       .then((result) => {
         console.log("result : " + result);
+        return client.pushMessage(event.source.userId, result.name);
       })
       .catch((error) => {
         console.log("error : " + error);
@@ -43,7 +44,7 @@ function handleEvent(event){
 
       // use reply API
       // return client.replyMessage(event.replyToken, echo);
-      return client.pushMessage(event.source.userId, echo);
+     
 }
 
 // public
