@@ -2,7 +2,7 @@
 
 const line = require('@line/bot-sdk');
 const config = require('../configs');
- 
+const datamodel = require('../model/data');
 // create LINE SDK client
 const client = new line.Client(config.lineconfig);
 
@@ -28,7 +28,19 @@ function handleEvent(event){
     
       // create a echoing text message
       let echo = { type: 'text', text: event.message.text };
-    
+      
+      datamodel.create({
+        name: event.message.text,
+        size: '1',
+        type: event.type 
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+
+      });
+
       // use reply API
       // return client.replyMessage(event.replyToken, echo);
       return client.pushMessage(event.source.userId, echo);
