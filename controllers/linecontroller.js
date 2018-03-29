@@ -59,6 +59,7 @@ function handleEvent(event){
       .then((result) => {
         console.log("result : " + result);
         return recast.fnrecast(event.message.text)
+      })
       .then((d) => {
         console.log("data recast : " + d);
         return client.pushMessage(event.source.userId, echoButton);
