@@ -3,10 +3,10 @@
 const recast = require('recastai');
 const configs = require('../configs');
 
-module.exports.fnrecast = function(conver){
+module.exports.fnrecast = function(text,id){
     // let recastrequest = new recast.request(configs.recastToken, 'en');
     var build = new recast.build(configs.recastToken, 'en');
-    var CONVERSATION_ID = conver || '';
+    var CONVERSATION_ID = id || '';
 
-    build.dialog({ type: 'text', content: 'Hello Recast'}, { conversationId: CONVERSATION_ID });
+    build.dialog({ type: 'text', content: text}, { conversationId: id });
 };

@@ -49,8 +49,8 @@ function handleEvent(event){
                 }
             ]
         }
-      }
-      
+      };
+      let id = '';
       datamodel.create({
         name: event.message.text,
         size: '1',
@@ -58,7 +58,7 @@ function handleEvent(event){
       })
       .then((result) => {
         console.log("result : " + result);
-        return recast.fnrecast(event.message.text)
+        return recast.fnrecast(event.message.text, id);
       })
       .then((d) => {
         console.log("data recast : " + d);
