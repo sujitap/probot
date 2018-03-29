@@ -28,55 +28,55 @@ function handleEvent(event){
         return Promise.resolve(null);
       }
     
-      // // create a echoing text message
-      // let echo = { type: 'text', text: event.message.text };
-      // let echoButton ={
-      //   type: "template",
-      //   altText: "this is a confirm template",
-      //   template: {
-      //       type: "confirm",
-      //       text: event.message.text,
-      //       actions: [
-      //           {
-      //             type: "message",
-      //             label: "Yes",
-      //             text: event.message.text + " ใช่ค่ะ"
-      //           },
-      //           {
-      //             type: "message",
-      //             label: "No",
-      //             text: event.message.text + " ไม่ใช่ค่ะ"
-      //           }
-      //       ]
-      //   }
-      // };
+      // create a echoing text message
+      let echo = { type: 'text', text: event.message.text };
+      let echoButton ={
+        type: "template",
+        altText: "this is a confirm template",
+        template: {
+            type: "confirm",
+            text: event.message.text,
+            actions: [
+                {
+                  type: "message",
+                  label: "Yes",
+                  text: event.message.text + " ใช่ค่ะ"
+                },
+                {
+                  type: "message",
+                  label: "No",
+                  text: event.message.text + " ไม่ใช่ค่ะ"
+                }
+            ]
+        }
+      };
      
-      // datamodel.create({
-      //   name: event.message.text,
-      //   size: '1',
-      //   type: event.type 
-      // })
-      // .then((result) => {
-      //   return client.pushMessage(event.source.userId, echoButton);
-      //  })
-      // .catch((error) => {
-      //   console.log("error : " + error);
-      // });
-
-
-      let echo = '';
-      recast.fnrecast(event.message.text, id)
-      .then((a) => {
-        id += '1';
-        console.log("recast : " + a.intents);
-        echo = { type: 'text', text: a.intents };
-      })  
+      datamodel.create({
+        name: event.message.text,
+        size: '1',
+        type: event.type 
+      })
+      .then((result) => {
+        return client.pushMessage(event.source.userId, echoButton);
+       })
       .catch((error) => {
-        console.log("recast error : " + error);
+        console.log("error : " + error);
       });
+
+
+    //   let echo = '';
+    //   recast.fnrecast(event.message.text, id)
+    //   .then((a) => {
+    //     id += '1';
+    //     console.log("recast : " + a.intents);
+    //     echo = { type: 'text', text: a.intents };
+    //   })  
+    //   .catch((error) => {
+    //     console.log("recast error : " + error);
+    //   });
      
-      // use reply API
-      return client.pushMessage(event.source.userId, echo);
+    //   // use reply API
+    //   return client.pushMessage(event.source.userId, echo);
 }
 
 // public
