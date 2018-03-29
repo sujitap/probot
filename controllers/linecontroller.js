@@ -68,8 +68,8 @@ function handleEvent(event){
       recast.fnrecast(event.message.text, id)
       .then((a) => {
         id += '1';
-        console.log("recast : " + a);
-        echo = { type: 'text', text: JSON.stringify(a) };
+        console.log("recast : " + a.intents);
+        echo = { type: 'text', text: a.intents };
       })  
       .catch((error) => {
         console.log("recast error : " + error);
