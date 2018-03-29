@@ -8,5 +8,6 @@ module.exports.fnrecast = function(text,id){
     var build = new recast.build(configs.recastToken, 'en');
     var CONVERSATION_ID = id || '';
     console.log(text);
-    build.dialog({ type: 'text', content: text}, { conversationId: id });
+    return build.dialog({ type: 'text', content: text}, { conversationId: id });
+
 };
