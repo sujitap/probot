@@ -69,13 +69,14 @@ function handleEvent(event){
       .then((a) => {
         id += '1';
         console.log("recast : " + a);
+        let echo = { type: 'text', text: JSON.stringify(a) };
       })  
       .catch((error) => {
         console.log("recast error : " + error);
       });
-
+     
       // use reply API
-      // return client.replyMessage(event.replyToken, echo);
+      return client.replyMessage(event.replyToken, echo);
      
 }
 
