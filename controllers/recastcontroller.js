@@ -1,13 +1,13 @@
 'use strict';
 
-const recast = require('recastai');
+const recastai = require('recastai');
 const configs = require('../configs');
 
 module.exports.fnrecast = function(text, id){
-    // let recastrequest = new recast.request(configs.recastToken, 'en');
-    var build = new recast.build(configs.recastToken, 'en');
-    var CONVERSATION_ID = id || '';
-    console.log(text);
-    return build.dialog({ type: 'text', content: text}, { conversationId: CONVERSATION_ID });
+    var build = new recastai.build(configs.recastToken, 'en');
 
+    build.dialog({ type: 'text', content: 'Hello Recast'}, { conversationId: 'CONVERSATION_ID' })
+    .then(function(res) {
+        console.log(res);
+    });
 };

@@ -64,7 +64,7 @@ function handleEvent(event){
       // });
 
       let id = '';
-      recast.fnrecast(event.message.text , id)
+      recast.fnrecast(event.message.text)
       .then((a) => {
         console.log("recast : " + a);
       })  
