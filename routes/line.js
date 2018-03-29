@@ -11,18 +11,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// router.post('/webhook', line.middleware(config.lineconfig), linecont.webhook);
-
-// // register a webhook handler with middleware
-// // about the webhook, please refer to doc
-router.post('/callback', line.middleware(config.lineconfig), (req, res) => {
-  Promise.all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error(err);
-      res.status(500).end();
-    });
-});
-
+router.post('/webhook', line.middleware(config.lineconfig), linecont.webhook);
 
 module.exports = router;
