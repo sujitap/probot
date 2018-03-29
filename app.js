@@ -12,6 +12,8 @@ var lineRouter = require('./routes/line');
 
 var app = express();
 
+global.db = mongoose.createConnection(configs.dbconnection);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -20,7 +22,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/line', lineRouter);
 
-global.db = mongoose.createConnection(configs.dbconnection);
+
 
 app.use(logger('dev'));
 app.use(express.json());
