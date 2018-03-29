@@ -64,19 +64,20 @@ function handleEvent(event){
       });
 
 
-    //   let echo = '';
-    //   recast.fnrecast(event.message.text, id)
-    //   .then((a) => {
-    //     id += '1';
-    //     console.log("recast : " + a.intents);
-    //     echo = { type: 'text', text: a.intents };
-    //   })  
-    //   .catch((error) => {
-    //     console.log("recast error : " + error);
-    //   });
+      let echo = '';
+      recast.fnrecast(event.message.text, id)
+      .then((a) => {
+        id += '1';
+        let b = JSON.stringify(a);
+        console.log("recast : " +  b);
+        echo = { type: 'text', text:  b };
+      })  
+      .catch((error) => {
+        console.log("recast error : " + error);
+      });
      
-    //   // use reply API
-    //   return client.pushMessage(event.source.userId, echo);
+      // use reply API
+      return client.pushMessage(event.source.userId, echo);
 }
 
 // public
