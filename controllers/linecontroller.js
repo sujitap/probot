@@ -38,21 +38,17 @@ function handleEvent(event){
                 {
                   type: "message",
                   label: "Yes",
-                  text: "yes"
+                  text: event.message.text + " ใช่ค่ะ"
                 },
                 {
                   type: "message",
                   label: "No",
-                  text: "no"
+                  text: event.message.text + " ไม่ใช่ค่ะ"
                 }
             ]
         }
       }
       
-
-
-
-
       datamodel.create({
         name: event.message.text,
         size: '1',
