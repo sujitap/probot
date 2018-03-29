@@ -7,7 +7,7 @@ const recast = require('../controllers/recastcontroller');
 // create LINE SDK client
 const client = new line.Client(config.lineconfig);
 
-
+var id = '1';
 // create Express app
 // about Express itself: https://expressjs.com/
 
@@ -63,9 +63,11 @@ function handleEvent(event){
       //   console.log("error : " + error);
       // });
 
-      let id = '';
-      recast.fnrecast(event.message.text)
+
+      
+      recast.fnrecast(event.message.text, id)
       .then((a) => {
+        id += '1';
         console.log("recast : " + a);
       })  
       .catch((error) => {
