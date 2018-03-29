@@ -12,7 +12,7 @@ var lineRouter = require('./routes/line');
 
 var app = express();
 
-global.db = mongoose.createConnection(configs.dbconnection);
+mongoose.Connection(configs.dbconnection);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,14 +22,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/line', lineRouter);
 
-
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
