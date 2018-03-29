@@ -64,20 +64,19 @@ function handleEvent(event){
       // });
 
 
-      
+      let echo = '';
       recast.fnrecast(event.message.text, id)
       .then((a) => {
         id += '1';
         console.log("recast : " + a);
-        let echo = { type: 'text', text: JSON.stringify(a) };
+        echo = { type: 'text', text: JSON.stringify(a) };
       })  
       .catch((error) => {
         console.log("recast error : " + error);
       });
      
       // use reply API
-      return client.replyMessage(event.replyToken, echo);
-     
+      return client.pushMessage(event.source.userId, echo);
 }
 
 // public
