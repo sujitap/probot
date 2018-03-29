@@ -25,10 +25,4 @@ router.post('/callback', line.middleware(config.lineconfig), (req, res) => {
 });
 
 
-// listen on port
-const port = process.env.PORT || 3000;
-router.listen(port, () => {
-  console.log('listening on ${port}');
-});
-
 module.exports = router;
