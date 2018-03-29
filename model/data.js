@@ -9,4 +9,4 @@ let dataSchema = new schema({
     type: String
 });
 
-module.exports = db.model('data', dataSchema);
+module.exports = mongoose.model('data', dataSchema);
