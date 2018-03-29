@@ -35,10 +35,10 @@ function handleEvent(event){
         type: event.type 
       })
       .then((result) => {
-        console.log(result);
+        console.log("result : " + result);
       })
       .catch((error) => {
-
+        console.log("error : " + error);
       });
 
       // use reply API
